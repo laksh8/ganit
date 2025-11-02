@@ -3,10 +3,8 @@
 A mathematical utility, v0.1 ( major refactoring ahead )
 
 [ completed ]
-
-
-[ todo ]
 - ability to parse mathematical functions and store in memory
+[ todo ]
 - check continuity and differentiability of the function
 
 [ short term plan ]
