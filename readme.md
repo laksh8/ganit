@@ -1,11 +1,16 @@
 # Ganit
+---
 
 A mathematical utility, v0.1 ( major refactoring ahead )
 
+---
+
 [ completed ]
 - ability to parse mathematical functions and store in memory
+
 [ todo ]
-- check continuity and differentiability of the function
+- parse one way equations, BODMAS and handling variables
+- check continuity and differentiability of a function
 
 [ short term plan ]
 - a rule based system with competency in differential equations
@@ -14,4 +19,5 @@ A mathematical utility, v0.1 ( major refactoring ahead )
 [ long term plan ]
 - discrete and integrated configurable packages to ease computation of higher level mathematics in a variety of applications
 
+---
 end of readme
