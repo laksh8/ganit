@@ -3,8 +3,8 @@
 #include "math_utils.h"
 
 // input format: var{condition : output ; condition: output}
-struct function parse_func(char* input){
-    struct function func;
+Function parse_func(char* input){
+    Function func;
     delims(func.variable, 0, &input, "{");
 
     for (int i = 0; strlen(input) > 0; i++){
