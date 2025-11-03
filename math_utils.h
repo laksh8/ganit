@@ -22,11 +22,12 @@ typedef enum{
     SUBTRACT,
     MULTIPLY,
     DIVIDE,
+    UNIDENTIFIED,
 } ElementType;
 
 typedef struct {
     ElementType type;
-    int elementValue;
+    int value;
 } Element;
 
 typedef struct {
