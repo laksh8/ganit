@@ -1,4 +1,7 @@
 #include "utils.h"
+#include <ctype.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include "math_utils.h"
 
@@ -13,4 +16,52 @@ Function parse_func(char* input){
     }
 
     return func;
+}
+
+Equation init_equation(){
+    Equation eq;
+    eq.count = 0;
+    eq.capacity = 100;
+    eq.elements = malloc(eq.capacity * sizeof(Element));
+   return eq;
+}
+
+ElementType elementTypeClassify(char in){
+    if (isalpha(in)){
+        return VARIABLE;
+    }
+    if (isdigit(in)){
+        return LITERAL;
+    }
+
+    switch (in) {
+        case '+': return ADD;
+        case '-': return SUBTRACT;
+        case '*': return MULTIPLY;
+        case '/': return DIVIDE;
+        case '<': return LESS_THAN;
+        case '>': return GREATER_THAN;
+        case '=': return EQUALS_TO;
+    }
+
+    return UNIDENTIFIED;
+}
+
+Equation parse_eq(char *input){
+    Equation eq = init_equation();
+     if (!eq.elements) {
+        perror("memory allocation failed");
+        exit(1);
+    }
+    while (*input != 0){
+        if (eq.count >= eq.capacity){
+            eq.capacity *= 2;
+            eq.elements = realloc(eq.elements,eq.capacity * sizeof(Element));
+        }
+        eq.elements[eq.count].value = *input;
+        eq.elements[eq.count].type = elementTypeClassify(*input);
+        eq.count += 1;
+        input += 1;
+    }
+    return eq;
 }
