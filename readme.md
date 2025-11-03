@@ -7,8 +7,10 @@ A mathematical utility, v0.1 ( major refactoring ahead )
 
 [ completed ]
 - ability to parse mathematical functions and store in memory
+- tokenize equations with value and types
 
 [ todo ]
+- operator precedence parsing
 - parse one way equations, BODMAS and handling variables
 - check continuity and differentiability of a function
 
