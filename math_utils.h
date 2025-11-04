@@ -34,9 +34,19 @@ typedef struct {
     int capacity;
     int count;
     Element* elements;
-} Equation;
+} EquationTokens;
+
+typedef struct Node{
+    ElementType type;
+    struct Node* left;
+    struct Node* right;
+    int value;
+} Node;
+
+typedef Node* Equation;
 
 Function parse_func(char* input);
-Equation parse_eq(char* input);
+EquationTokens tokenize_eq(char* input);
+Equation parse_eq(EquationTokens);
 
 #endif
