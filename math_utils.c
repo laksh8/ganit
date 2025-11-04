@@ -18,8 +18,8 @@ Function parse_func(char* input){
     return func;
 }
 
-Equation init_equation(){
-    Equation eq;
+EquationTokens init_equation(){
+    EquationTokens eq;
     eq.count = 0;
     eq.capacity = 100;
     eq.elements = malloc(eq.capacity * sizeof(Element));
@@ -47,8 +47,8 @@ ElementType elementTypeClassify(char in){
     return UNIDENTIFIED;
 }
 
-Equation parse_eq(char *input){
-    Equation eq = init_equation();
+EquationTokens tokenize_eq(char *input){
+    EquationTokens eq = init_equation();
      if (!eq.elements) {
         perror("memory allocation failed");
         exit(1);
