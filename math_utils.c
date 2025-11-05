@@ -1,22 +1,8 @@
-#include "utils.h"
 #include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "math_utils.h"
-
-// input format: var{condition : output ; condition: output}
-Function parse_func(char* input){
-    Function func;
-    delims(func.variable, 0, &input, "{");
-
-    for (int i = 0; strlen(input) > 0; i++){
-        delims(func.conds[i].condition, 0, &input, ":");
-        delims(func.conds[i].output, 0, &input, ";}");
-    }
-
-    return func;
-}
 
 EquationTokens init_equation(){
     EquationTokens eq;
@@ -64,4 +50,35 @@ EquationTokens tokenize_eq(char *input){
         input += 1;
     }
     return eq;
+}
+
+Node* make_node(ElementType type, int value, Node *left, Node *right){
+    Node* nd = malloc(sizeof(Node));
+    nd->type = type;
+    nd->left = NULL;
+    nd->right = NULL;
+    nd->value = value;
+    return nd;
+}
+
+int precedence(ElementType t) {
+    switch (t) {
+        case MULTIPLY:
+        case DIVIDE:
+            return 2;
+        case ADD:
+        case SUBTRACT:
+            return 1;
+        case LESS_THAN:
+        case GREATER_THAN:
+        case EQUALS_TO:
+            return 0;
+        default:
+            return -1;
+    }
+}
+
+int is_operator(ElementType t) {
+    return t == ADD || t == SUBTRACT || t == MULTIPLY || t == DIVIDE ||
+           t == LESS_THAN || t == GREATER_THAN || t == EQUALS_TO;
 }
