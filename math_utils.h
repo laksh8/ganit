@@ -1,6 +1,6 @@
-#ifndef math_utils
+#ifndef MATH_UTILS_H
 
-#define math_utils
+#define MATH_UTILS_H
 
 
 typedef struct {
@@ -45,8 +45,9 @@ typedef struct Node{
 
 typedef Node* Equation;
 
-Function parse_func(char* input);
 EquationTokens tokenize_eq(char* input);
-Equation parse_eq(EquationTokens);
+Node* make_node(ElementType type, int value, Node* left, Node* right);
+int is_operator(ElementType t);
+int precedence(ElementType t);
 
 #endif
